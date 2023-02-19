@@ -1,8 +1,5 @@
 package io.github.keddnyo.quicktag.presentation.screen.main
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -34,6 +31,7 @@ import io.github.keddnyo.quicktag.domain.view.navigation.BoardRuleNavRoute
 import io.github.keddnyo.quicktag.domain.viewmodel.BoardRuleViewModel
 import io.github.keddnyo.quicktag.presentation.component.dialog.AlertDialog
 import io.github.keddnyo.quicktag.presentation.component.tag.TagRow
+import io.github.keddnyo.quicktag.utils.openWebPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -128,12 +126,6 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
             text = stringResource(id = R.string.about_summary)
         )
     }
-}
-
-private fun Context.openWebPage(url: String) {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse(url)
-    startActivity(intent)
 }
 
 private fun navigateToScreen(navController: NavHostController, route: String) {

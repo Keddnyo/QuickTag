@@ -13,24 +13,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.navigation.NavHostController
 import io.github.keddnyo.quicktag.R
+import io.github.keddnyo.quicktag.common.Constants
 import io.github.keddnyo.quicktag.domain.viewmodel.BoardRuleViewModel
 import io.github.keddnyo.quicktag.presentation.component.pop_up.IconArrowBack
 import io.github.keddnyo.quicktag.presentation.component.tag.TagRow
 import io.github.keddnyo.quicktag.presentation.component.tag.TagVariant
+import io.github.keddnyo.quicktag.utils.openWebPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) {
 
+    val context = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
     val haptic = LocalHapticFeedback.current
 
     val rule = viewModel.currentBoardRule
+
+    val fourPdaForum = Constants.FOUR_PDA_FORUM_URL
 
     Scaffold(
         topBar = {
@@ -63,6 +69,7 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                         },
                         onLongClick = {
                             clipboardManager.copyTag(TagVariant.CUR, rule.content)
+                            context.openWebPage(fourPdaForum)
                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                             navController.popBackStack()
                         }
@@ -78,6 +85,7 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                         },
                         onLongClick = {
                             clipboardManager.copyTag(TagVariant.MOD, rule.content)
+                            context.openWebPage(fourPdaForum)
                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                             navController.popBackStack()
                         }
@@ -93,6 +101,7 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                         },
                         onLongClick = {
                             clipboardManager.copyTag(TagVariant.EX, rule.content)
+                            context.openWebPage(fourPdaForum)
                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                             navController.popBackStack()
                         }
