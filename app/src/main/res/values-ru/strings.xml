@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">О приложении</string>
+    <string name="about_summary">Приложение разработал Keddnyo</string>
+
+    <string name="create_board_rule">Добавить правило</string>
+    <string name="editor">Редактор</string>
+    <string name="editor_placeholder">Пишите здесь</string>
+    <string name="done_edit_rule">Готово</string>
+    <string name="delete_board_rule">Удалить</string>
+
+    <string name="delete_board_rule_title">Удалить правило</string>
+    <string name="delete_board_rule_summary">Вы уверены что хотите удалить это правило?</string>
+
+    <string name="select_tag_type">Выберите вариант</string>
+
+    <string name="navigate_up">Вернуться</string>
+</resources>
