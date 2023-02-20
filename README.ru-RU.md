@@ -1,4 +1,4 @@
-# <a href="https://github.com/Keddnyo/QuickTag/releases/latest">QuickTag 1.0.0</a>
+# <a href="https://github.com/Keddnyo/QuickTag/releases/latest">QuickTag 1.1.0</a>
 
 <a href="https://github.com/Keddnyo/QuickTag/releases"><img src="https://img.shields.io/github/downloads/keddnyo/quicktag/total?style=for-the-badge"></a>
 <a href="https://github.com/Keddnyo/QuickTag/releases/latest"><img src="https://img.shields.io/github/downloads/keddnyo/quicktag/latest/total?label=Latest%20downloads&style=for-the-badge"></a>
