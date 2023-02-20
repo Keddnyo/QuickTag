@@ -70,7 +70,7 @@ class BoardRuleViewModel(application: Application) : AndroidViewModel(applicatio
             if (dataStore.firstStartFlow.first() == true) {
                 initialBoardRules.forEach { content ->
                     val rule = BoardRule(
-                        content = content
+                        content = content.trim()
                     )
                     createBoardRule(rule) {
 

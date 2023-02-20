@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -33,12 +34,11 @@ import io.github.keddnyo.quicktag.presentation.component.pop_up.IconArrowBack
 @Composable
 fun EditScreen(navController: NavHostController, viewModel: BoardRuleViewModel) {
 
-    var openDialog by remember { mutableStateOf(false) }
-
     val rule = viewModel.currentBoardRule
     val isRuleExist = viewModel.isBoardRuleExists
 
-    var content by remember { mutableStateOf(rule.content) }
+    var openDialog by remember { mutableStateOf(false) }
+    var content by rememberSaveable { mutableStateOf(rule.content) }
 
     Scaffold(topBar = {
         TopAppBar(title = {
@@ -103,30 +103,26 @@ fun EditScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
     if (openDialog) {
         AlertDialog(onDismissRequest = {
             openDialog = false
-        },
-            confirmButton = {
-                Button(onClick = {
-                    viewModel.deleteBoardRule(rule) {
-                        openDialog = false
-                        navController.popBackStack()
-                    }
-                }) {
-                    Text(
-                        text = stringResource(id = android.R.string.ok)
-                    )
-                }
-            },
-            dismissButton = {
-                Button(onClick = {
+        }, confirmButton = {
+            Button(onClick = {
+                viewModel.deleteBoardRule(rule) {
                     openDialog = false
-                }) {
-                    Text(
-                        text = stringResource(id = android.R.string.cancel)
-                    )
+                    navController.popBackStack()
                 }
-            },
-            title = stringResource(id = R.string.delete_board_rule_title),
-            text = stringResource(id = R.string.delete_board_rule_summary)
+            }) {
+                Text(
+                    text = stringResource(id = android.R.string.ok)
+                )
+            }
+        }, dismissButton = {
+            Button(onClick = {
+                openDialog = false
+            }) {
+                Text(
+                    text = stringResource(id = android.R.string.cancel)
+                )
+            }
+        }, title = stringResource(id = R.string.delete_board_rule_title)
         )
     }
 }

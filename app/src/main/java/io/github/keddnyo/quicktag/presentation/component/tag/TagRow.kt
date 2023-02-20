@@ -57,7 +57,7 @@ fun TagRow(
                 onLongClick = {
                     onLongClick()
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                })
+                }), verticalAlignment = Alignment.CenterVertically
     ) {
         Box(
             modifier = Modifier
@@ -74,7 +74,7 @@ fun TagRow(
             factory = {
                 TextView(it).apply {
                     layoutParams = ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
                     )
                     text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
                 }

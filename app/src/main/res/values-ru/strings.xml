@@ -9,10 +9,10 @@
     <string name="done_edit_rule">Готово</string>
     <string name="delete_board_rule">Удалить</string>
 
-    <string name="delete_board_rule_title">Удалить правило</string>
-    <string name="delete_board_rule_summary">Вы уверены что хотите удалить это правило?</string>
+    <string name="delete_board_rule_title">Удалить правило?</string>
 
     <string name="select_tag_type">Выберите вариант</string>
+    <string name="tag_copied_to_clipboard">Тег скопирован</string>
 
     <string name="navigate_up">Вернуться</string>
 </resources>

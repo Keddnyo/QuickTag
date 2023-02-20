@@ -8,8 +8,7 @@ fun AlertDialog(
     onDismissRequest: () -> Unit,
     confirmButton: @Composable () -> Unit,
     dismissButton: @Composable () -> Unit,
-    title: String,
-    text: String
+    title: String
 ) {
     androidx.compose.material3.AlertDialog(onDismissRequest = {
         onDismissRequest()
@@ -20,10 +19,6 @@ fun AlertDialog(
     }, title = {
         Text(
             text = title
-        )
-    }, text = {
-        Text(
-            text = text
         )
     })
 }

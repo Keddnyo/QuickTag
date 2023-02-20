@@ -37,11 +37,12 @@ import io.github.keddnyo.quicktag.utils.openWebPage
 @Composable
 fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) {
 
+    val context = LocalContext.current
+
     var openDialog by remember { mutableStateOf(false) }
+
     val githubPage = Constants.GITHUB_REPOSITORY_URL
     val fourPdaPage = Constants.FOUR_PDA_PROFILE_URL
-
-    val context = LocalContext.current
 
     val boardRules = viewModel.getBoardRules().observeAsState(initial = listOf()).value
 
@@ -59,7 +60,7 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
             }) {
                 Icon(
                     imageVector = Icons.Default.Info,
-                    contentDescription = stringResource(id = R.string.github)
+                    contentDescription = stringResource(id = R.string.about)
                 )
             }
         }, actions = {
@@ -103,27 +104,23 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
     if (openDialog) {
         AlertDialog(onDismissRequest = {
             openDialog = false
-        },
-            confirmButton = {
-                Button(onClick = {
-                    context.openWebPage(githubPage)
-                }) {
-                    Text(
-                        text = stringResource(id = R.string.github)
-                    )
-                }
-            },
-            dismissButton = {
-                Button(onClick = {
-                    context.openWebPage(fourPdaPage)
-                }) {
-                    Text(
-                        text = stringResource(id = R.string.four_pda)
-                    )
-                }
-            },
-            title = stringResource(id = R.string.about),
-            text = stringResource(id = R.string.about_summary)
+        }, confirmButton = {
+            Button(onClick = {
+                context.openWebPage(githubPage)
+            }) {
+                Text(
+                    text = stringResource(id = R.string.github)
+                )
+            }
+        }, dismissButton = {
+            Button(onClick = {
+                context.openWebPage(fourPdaPage)
+            }) {
+                Text(
+                    text = stringResource(id = R.string.four_pda)
+                )
+            }
+        }, title = stringResource(id = R.string.about_summary)
         )
     }
 }
