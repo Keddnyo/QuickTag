@@ -36,5 +36,10 @@ III. Editor screen
   <img src="https://user-images.githubusercontent.com/65981689/220200835-340260b2-7e04-4885-bce0-a1fbde11c991.png" max-width="100%" width="33%">
   <img src="https://user-images.githubusercontent.com/65981689/220200836-2cdb9992-f0b1-4a0b-b6b8-135fa0088129.png" max-width="100%" width="33%">
 </p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65981689/220201251-122c5311-fcdc-457e-89cb-eeb2e30fb1ee.png" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220201254-f8e24436-8551-414c-bed3-96aa5f8187ea.png" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220201256-c41926a6-34e6-419e-bd20-35ae7875e7aa.png" max-width="100%" width="33%">
+</p>
 
 [Показать на русском](https://github.com/Keddnyo/QuickTag/blob/master/README.ru-RU.md)
