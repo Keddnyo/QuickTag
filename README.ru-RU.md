@@ -29,7 +29,7 @@ III. Экран редактирования
 2. Нажмите на кнопку "Удалить" чтобы удалить тег
 3. Нажмите на кнопку "Назад" чтобы вернутся на главный экран
 
-## Screenshots
+## Скриншоты
 <p align="center">
   <img src="https://user-images.githubusercontent.com/65981689/219975008-ef22ed4f-9e05-4e21-b68f-1600573a0af2.png" max-width="100%" width="33%">
   <img src="https://user-images.githubusercontent.com/65981689/219975298-cdbe1dba-bcaa-4692-bd1d-9a2e4bcd3480.png" max-width="100%" width="33%">
