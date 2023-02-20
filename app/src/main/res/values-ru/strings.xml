@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">О приложении</string>
-    <string name="about_summary">Приложение разработал Keddnyo</string>
+    <string name="about_summary">Разработал Keddnyo</string>
 
     <string name="create_board_rule">Добавить правило</string>
     <string name="editor">Редактор</string>
