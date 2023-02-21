@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">QuickTag</string>
 
+    <string name="no_rules">No rules</string>
+
     <string name="about">About</string>
-    <string name="about_summary">App created by Keddnyo</string>
+    <string name="about_summary">Created by Keddnyo</string>
     <string name="github" translatable="false">GitHub</string>
     <string name="four_pda" translatable="false">4PDA</string>
 
@@ -15,7 +17,7 @@
     <string name="delete_board_rule_title">Delete this rule?</string>
 
     <string name="select_tag_type">Select tag type</string>
-    <string name="tag_copied_to_clipboard">The tag has been copied</string>
+    <string name="rule_copied_to_clipboard">The rule has been copied</string>
 
     <string name="navigate_up">Navigate up</string>
 </resources>

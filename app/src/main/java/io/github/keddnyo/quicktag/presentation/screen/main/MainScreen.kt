@@ -1,6 +1,7 @@
 package io.github.keddnyo.quicktag.presentation.screen.main
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -79,24 +81,31 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
         })
     }) { paddingValues ->
         Box(
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier.padding(paddingValues).fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            LazyColumn {
-                items(boardRules) { rule ->
-                    TagRow(content = rule.contentPreview, onClick = {
-                        viewModel.apply {
-                            currentBoardRule = rule
-                            isBoardRuleExists = true
-                        }
-                        navigateToScreen(navController, typeScreen)
-                    }, onLongClick = {
-                        viewModel.apply {
-                            currentBoardRule = rule
-                            isBoardRuleExists = true
-                        }
-                        navigateToScreen(navController, editScreen)
-                    })
+            if (boardRules.isNotEmpty()) {
+                LazyColumn {
+                    items(boardRules) { rule ->
+                        TagRow(content = rule.contentPreview, onClick = {
+                            viewModel.apply {
+                                currentBoardRule = rule
+                                isBoardRuleExists = true
+                            }
+                            navigateToScreen(navController, typeScreen)
+                        }, onLongClick = {
+                            viewModel.apply {
+                                currentBoardRule = rule
+                                isBoardRuleExists = true
+                            }
+                            navigateToScreen(navController, editScreen)
+                        })
+                    }
                 }
+            } else {
+                Text(
+                    text = stringResource(id = R.string.no_rules)
+                )
             }
         }
     }

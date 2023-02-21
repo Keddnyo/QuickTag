@@ -37,8 +37,9 @@ fun EditScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
     val rule = viewModel.currentBoardRule
     val isRuleExist = viewModel.isBoardRuleExists
 
-    var openDialog by remember { mutableStateOf(false) }
     var content by rememberSaveable { mutableStateOf(rule.content) }
+
+    var openDialog by remember { mutableStateOf(false) }
 
     Scaffold(topBar = {
         TopAppBar(title = {

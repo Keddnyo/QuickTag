@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -33,14 +34,18 @@ import androidx.core.text.HtmlCompat
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TagRow(
-    tag: TagVariant = TagVariant.CUR, content: String, onClick: () -> Unit, onLongClick: () -> Unit
+    tag: TagVariant? = TagVariant.CUR, content: String, onClick: () -> Unit, onLongClick: () -> Unit
 ) {
     val haptic = LocalHapticFeedback.current
 
-    val background = if (isSystemInDarkTheme()) {
-        tag.color.darkColor
+    val background = if (tag != null) {
+        if (isSystemInDarkTheme()) {
+            tag.color.darkColor
+        } else {
+            tag.color.lightColor
+        }
     } else {
-        tag.color.lightColor
+        MaterialTheme.colorScheme.onBackground.copy(alpha = 0.05f)
     }
 
     Row(
@@ -59,16 +64,18 @@ fun TagRow(
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 }), verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .background(background)
-                .padding(vertical = 5.dp, horizontal = 15.dp)
-                .width(width = 22.dp)
-                .fillMaxHeight(), contentAlignment = Alignment.TopCenter
-        ) {
-            Text(
-                text = tag.symbol, color = Color.White, fontSize = 28.sp
-            )
+        if (tag != null) {
+            Box(
+                modifier = Modifier
+                    .background(background)
+                    .padding(vertical = 5.dp, horizontal = 15.dp)
+                    .width(width = 22.dp)
+                    .fillMaxHeight(), contentAlignment = Alignment.TopCenter
+            ) {
+                Text(
+                    text = tag.symbol, color = Color.White, fontSize = 28.sp
+                )
+            }
         }
         AndroidView(
             factory = {

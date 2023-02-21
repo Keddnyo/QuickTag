@@ -12,11 +12,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.navigation.NavHostController
@@ -34,88 +32,74 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
 
     val context = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
-    val haptic = LocalHapticFeedback.current
 
     val content = rememberSaveable { viewModel.currentBoardRule.content }
     val contentPreview = rememberSaveable { viewModel.currentBoardRule.contentPreview }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = {
-                Text(
-                    text = stringResource(id = R.string.select_tag_type)
-                )
-            }, navigationIcon = {
-                IconButton(
-                    onClick = {
-                        navController.popBackStack()
-                    }
-                ) {
-                    IconArrowBack()
-                }
-            })
-        }
-    ) { paddingValues ->
+    Scaffold(topBar = {
+        TopAppBar(title = {
+            Text(
+                text = stringResource(id = R.string.select_tag_type)
+            )
+        }, navigationIcon = {
+            IconButton(onClick = {
+                navController.popBackStack()
+            }) {
+                IconArrowBack()
+            }
+        })
+    }) { paddingValues ->
         Box(
             modifier = Modifier.padding(paddingValues)
         ) {
             LazyColumn {
                 item {
-                    TagRow(
-                        tag = TagVariant.CUR,
-                        content = contentPreview,
-                        onClick = {
-                            clipboardManager.copyTag(context, TagVariant.CUR, content)
-                            navController.popBackStack()
-                        },
-                        onLongClick = {
-                            clipboardManager.copyTag(context, TagVariant.CUR, content)
-                            context.openFourPDA()
-                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                            navController.popBackStack()
-                        }
-                    )
+                    TagRow(tag = null, content = contentPreview, onClick = {
+                        clipboardManager.copyTag(context, null, content)
+                    }, onLongClick = {
+                        clipboardManager.copyTag(context, null, content, true)
+                    })
                 }
                 item {
-                    TagRow(
-                        tag = TagVariant.MOD,
-                        content = contentPreview,
-                        onClick = {
-                            clipboardManager.copyTag(context, TagVariant.MOD, content)
-                            navController.popBackStack()
-                        },
-                        onLongClick = {
-                            clipboardManager.copyTag(context, TagVariant.MOD, content)
-                            context.openFourPDA()
-                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                            navController.popBackStack()
-                        }
-                    )
+                    TagRow(tag = TagVariant.CUR, content = contentPreview, onClick = {
+                        clipboardManager.copyTag(context, TagVariant.CUR, content)
+                    }, onLongClick = {
+                        clipboardManager.copyTag(context, TagVariant.CUR, content, true)
+                    })
                 }
                 item {
-                    TagRow(
-                        tag = TagVariant.EX,
-                        content = contentPreview,
-                        onClick = {
-                            clipboardManager.copyTag(context, TagVariant.EX, content)
-                            navController.popBackStack()
-                        },
-                        onLongClick = {
-                            clipboardManager.copyTag(context, TagVariant.EX, content)
-                            context.openFourPDA()
-                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                            navController.popBackStack()
-                        }
-                    )
+                    TagRow(tag = TagVariant.MOD, content = contentPreview, onClick = {
+                        clipboardManager.copyTag(context, TagVariant.MOD, content)
+                    }, onLongClick = {
+                        clipboardManager.copyTag(context, TagVariant.MOD, content, true)
+                    })
+                }
+                item {
+                    TagRow(tag = TagVariant.EX, content = contentPreview, onClick = {
+                        clipboardManager.copyTag(context, TagVariant.EX, content)
+                    }, onLongClick = {
+                        clipboardManager.copyTag(context, TagVariant.EX, content, true)
+                    })
                 }
             }
         }
     }
 }
 
-private fun ClipboardManager.copyTag(context: Context, tag: TagVariant, content: String) {
-    val type = tag.tagWrapper
-    val text = "[$type]\n$content\n[/$type]"
-    setText(AnnotatedString(text))
-    Display().showToast(context, context.getString(R.string.tag_copied_to_clipboard))
+private fun ClipboardManager.copyTag(
+    context: Context, tag: TagVariant?, content: String, showForum: Boolean = false
+) {
+    if (tag != null) {
+        val type = tag.tagWrapper
+        val text = "[$type]\n$content\n[/$type]"
+        setText(AnnotatedString(text))
+    } else {
+        setText(AnnotatedString(content))
+    }
+
+    Display().showToast(context, context.getString(R.string.rule_copied_to_clipboard))
+
+    if (showForum) {
+        context.openFourPDA()
+    }
 }

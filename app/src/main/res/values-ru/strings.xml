@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="no_rules">Здесь ничего нет</string>
+
     <string name="about">О приложении</string>
     <string name="about_summary">Разработал Keddnyo</string>
 
@@ -12,7 +14,7 @@
     <string name="delete_board_rule_title">Удалить правило?</string>
 
     <string name="select_tag_type">Выберите вариант</string>
-    <string name="tag_copied_to_clipboard">Тег скопирован</string>
+    <string name="rule_copied_to_clipboard">Правило скопировано</string>
 
     <string name="navigate_up">Вернуться</string>
 </resources>
