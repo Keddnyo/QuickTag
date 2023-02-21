@@ -69,7 +69,6 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
             IconButton(onClick = {
                 viewModel.apply {
                     currentBoardRule = BoardRule()
-                    isBoardRuleExists = false
                 }
                 navigateToScreen(navController, editScreen)
             }) {
@@ -90,13 +89,11 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                         TagRow(content = rule.contentPreview, onClick = {
                             viewModel.apply {
                                 currentBoardRule = rule
-                                isBoardRuleExists = true
                             }
                             navigateToScreen(navController, typeScreen)
                         }, onLongClick = {
                             viewModel.apply {
                                 currentBoardRule = rule
-                                isBoardRuleExists = true
                             }
                             navigateToScreen(navController, editScreen)
                         })

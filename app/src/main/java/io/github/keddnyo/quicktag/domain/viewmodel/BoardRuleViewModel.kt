@@ -95,6 +95,5 @@ class BoardRuleViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     var currentBoardRule by mutableStateOf(BoardRule())
-    var isBoardRuleExists by mutableStateOf(false)
 
 }

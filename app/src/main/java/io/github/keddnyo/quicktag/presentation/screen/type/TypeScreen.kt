@@ -4,13 +4,21 @@ import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Button
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -20,6 +28,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.navigation.NavHostController
 import io.github.keddnyo.quicktag.R
 import io.github.keddnyo.quicktag.domain.viewmodel.BoardRuleViewModel
+import io.github.keddnyo.quicktag.presentation.component.dialog.AlertDialog
 import io.github.keddnyo.quicktag.presentation.component.pop_up.IconArrowBack
 import io.github.keddnyo.quicktag.presentation.component.tag.TagRow
 import io.github.keddnyo.quicktag.presentation.component.tag.TagVariant
@@ -33,11 +42,15 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
     val context = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
 
-    val content = rememberSaveable { viewModel.currentBoardRule.content }
-    val contentPreview = rememberSaveable { viewModel.currentBoardRule.contentPreview }
+    val rule = viewModel.currentBoardRule
+
+    val content = rememberSaveable { rule.content }
+    val contentPreview = rememberSaveable { rule.contentPreview }
+
+    var openDialog by remember { mutableStateOf(false) }
 
     Scaffold(topBar = {
-        TopAppBar(title = {
+        CenterAlignedTopAppBar(title = {
             Text(
                 text = stringResource(id = R.string.select_tag_type)
             )
@@ -46,6 +59,15 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                 navController.popBackStack()
             }) {
                 IconArrowBack()
+            }
+        }, actions = {
+            IconButton(onClick = {
+                openDialog = true
+            }) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = stringResource(id = R.string.delete_board_rule)
+                )
             }
         })
     }) { paddingValues ->
@@ -83,6 +105,32 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                 }
             }
         }
+    }
+
+    if (openDialog) {
+        AlertDialog(onDismissRequest = {
+            openDialog = false
+        }, confirmButton = {
+            Button(onClick = {
+                viewModel.deleteBoardRule(rule) {
+                    openDialog = false
+                    navController.popBackStack()
+                }
+            }) {
+                Text(
+                    text = stringResource(id = android.R.string.ok)
+                )
+            }
+        }, dismissButton = {
+            Button(onClick = {
+                openDialog = false
+            }) {
+                Text(
+                    text = stringResource(id = android.R.string.cancel)
+                )
+            }
+        }, title = stringResource(id = R.string.delete_board_rule_title)
+        )
     }
 }
 
