@@ -32,14 +32,14 @@ III. Editor screen
 
 ## Screenshots
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/65981689/220200831-6986e1db-b03f-42c5-90e8-9357232cb9b1.png" max-width="100%" width="33%">
-  <img src="https://user-images.githubusercontent.com/65981689/220200835-340260b2-7e04-4885-bce0-a1fbde11c991.png" max-width="100%" width="33%">
-  <img src="https://user-images.githubusercontent.com/65981689/220200836-2cdb9992-f0b1-4a0b-b6b8-135fa0088129.png" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220896993-89d6e965-18fd-41f9-aed0-39207527453e.jpg" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220897585-7524c789-36ff-45f6-a2d5-cf168b80f9f5.jpg" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220897578-8266ff44-1e38-446d-823e-49d110a8efb8.jpg" max-width="100%" width="33%">
 </p>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/65981689/220201251-122c5311-fcdc-457e-89cb-eeb2e30fb1ee.png" max-width="100%" width="33%">
-  <img src="https://user-images.githubusercontent.com/65981689/220201254-f8e24436-8551-414c-bed3-96aa5f8187ea.png" max-width="100%" width="33%">
-  <img src="https://user-images.githubusercontent.com/65981689/220201256-c41926a6-34e6-419e-bd20-35ae7875e7aa.png" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220896986-2a281c43-d96c-4c81-9bfd-cb7d89a008a6.jpg" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220897579-91d92d56-34fe-4fd6-87bd-f9374da0175b.jpg" max-width="100%" width="33%">
+  <img src="https://user-images.githubusercontent.com/65981689/220897583-5ad180e7-a371-4385-9aa0-286ff0d43247.jpg" max-width="100%" width="33%">
 </p>
 
 [Показать на русском](https://github.com/Keddnyo/QuickTag/blob/master/README.ru-RU.md)
