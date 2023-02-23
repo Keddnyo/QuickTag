@@ -4,7 +4,7 @@
 <a href="https://github.com/Keddnyo/QuickTag/releases"><img src="https://img.shields.io/github/downloads/keddnyo/quicktag/total?style=for-the-badge"></a>
 <a href="https://github.com/Keddnyo/QuickTag/releases/latest"><img src="https://img.shields.io/github/downloads/keddnyo/quicktag/latest/total?label=Latest%20downloads&style=for-the-badge"></a>
 
-## Возможности
+## Особенности
 1. Android 5.0+
 2. Малый размер приложения
 3. Material 3
