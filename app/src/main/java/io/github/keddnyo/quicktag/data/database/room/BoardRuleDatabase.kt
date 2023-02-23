@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import io.github.keddnyo.quicktag.data.database.room.dao.BoardRuleRoomDao
 import io.github.keddnyo.quicktag.domain.model.BoardRule
 
-@Database(entities = [BoardRule::class], version = 1)
+@Database(entities = [BoardRule::class], version = 1, exportSchema = false)
 abstract class BoardRuleDatabase : RoomDatabase() {
     abstract fun getRoomDao(): BoardRuleRoomDao
 
