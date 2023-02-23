@@ -8,6 +8,8 @@
     <string name="github" translatable="false">GitHub</string>
     <string name="four_pda" translatable="false">4PDA</string>
 
+    <string name="official_rules_not_edit">Official rules aren\'t editable</string>
+
     <string name="create_board_rule">Add a rule</string>
     <string name="editor">Editor</string>
     <string name="editor_placeholder">Type here</string>

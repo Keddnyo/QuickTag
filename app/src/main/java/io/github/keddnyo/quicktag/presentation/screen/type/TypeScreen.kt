@@ -47,8 +47,6 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
     val content = rememberSaveable { rule.content }
     val contentPreview = rememberSaveable { rule.contentPreview }
 
-    var openDialog by remember { mutableStateOf(false) }
-
     Scaffold(topBar = {
         CenterAlignedTopAppBar(title = {
             Text(
@@ -59,15 +57,6 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                 navController.popBackStack()
             }) {
                 IconArrowBack()
-            }
-        }, actions = {
-            IconButton(onClick = {
-                openDialog = true
-            }) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = stringResource(id = R.string.delete_board_rule)
-                )
             }
         })
     }) { paddingValues ->
@@ -105,32 +94,6 @@ fun TypeScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                 }
             }
         }
-    }
-
-    if (openDialog) {
-        AlertDialog(onDismissRequest = {
-            openDialog = false
-        }, confirmButton = {
-            Button(onClick = {
-                viewModel.deleteBoardRule(rule) {
-                    openDialog = false
-                    navController.popBackStack()
-                }
-            }) {
-                Text(
-                    text = stringResource(id = android.R.string.ok)
-                )
-            }
-        }, dismissButton = {
-            Button(onClick = {
-                openDialog = false
-            }) {
-                Text(
-                    text = stringResource(id = android.R.string.cancel)
-                )
-            }
-        }, title = stringResource(id = R.string.delete_board_rule_title)
-        )
     }
 }
 

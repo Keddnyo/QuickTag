@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import io.github.keddnyo.quicktag.data.database.room.AppRoomDatabase
+import io.github.keddnyo.quicktag.data.database.room.BoardRuleDatabase
 import io.github.keddnyo.quicktag.data.database.room.repository.BoardRuleRoomRepository
 import io.github.keddnyo.quicktag.data.datastore.AppDataStore
 import io.github.keddnyo.quicktag.data.local.repository.BoardRuleLocalRepository
@@ -22,7 +22,7 @@ class BoardRuleViewModel(application: Application) : AndroidViewModel(applicatio
     private val localRepo: BoardRuleLocalRepository
 
     init {
-        val dao = AppRoomDatabase.getInstance(application).getRoomDao()
+        val dao = BoardRuleDatabase.getInstance(application).getRoomDao()
 
         database = BoardRuleRoomRepository(dao)
         dataStore = AppDataStore(application)
@@ -68,10 +68,12 @@ class BoardRuleViewModel(application: Application) : AndroidViewModel(applicatio
     private fun createBoardRules(initialBoardRules: List<String>) {
         ioThread {
             if (dataStore.firstStartFlow.first() == true) {
-                initialBoardRules.forEach { content ->
-                    val rule = BoardRule(
-                        content = content.trim()
+                initialBoardRules.map { content ->
+                    BoardRule(
+                        content = content.trim(),
+                        isOfficial = true
                     )
+                }.forEach { rule ->
                     createBoardRule(rule) {
 
                     }

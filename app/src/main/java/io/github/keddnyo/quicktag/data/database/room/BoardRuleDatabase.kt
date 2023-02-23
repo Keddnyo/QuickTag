@@ -8,22 +8,21 @@ import io.github.keddnyo.quicktag.data.database.room.dao.BoardRuleRoomDao
 import io.github.keddnyo.quicktag.domain.model.BoardRule
 
 @Database(entities = [BoardRule::class], version = 1)
-abstract class AppRoomDatabase : RoomDatabase() {
+abstract class BoardRuleDatabase : RoomDatabase() {
     abstract fun getRoomDao(): BoardRuleRoomDao
 
     companion object {
-        private var INSTANCE: AppRoomDatabase? = null
+        private var INSTANCE: BoardRuleDatabase? = null
 
-        fun getInstance(context: Context): AppRoomDatabase {
+        fun getInstance(context: Context): BoardRuleDatabase {
             return if (INSTANCE == null) {
                 INSTANCE = Room.databaseBuilder(
-                    context = context,
-                    klass = AppRoomDatabase::class.java,
-                    name = "quick_tag_database"
+                    context, BoardRuleDatabase::class.java, "board_rules"
                 ).build()
-                INSTANCE as AppRoomDatabase
+
+                INSTANCE as BoardRuleDatabase
             } else {
-                INSTANCE as AppRoomDatabase
+                INSTANCE as BoardRuleDatabase
             }
         }
     }

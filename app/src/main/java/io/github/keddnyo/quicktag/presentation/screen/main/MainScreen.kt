@@ -33,6 +33,7 @@ import io.github.keddnyo.quicktag.domain.view.navigation.BoardRuleNavRoute
 import io.github.keddnyo.quicktag.domain.viewmodel.BoardRuleViewModel
 import io.github.keddnyo.quicktag.presentation.component.dialog.AlertDialog
 import io.github.keddnyo.quicktag.presentation.component.tag.TagRow
+import io.github.keddnyo.quicktag.utils.Display
 import io.github.keddnyo.quicktag.utils.openWebPage
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,11 +81,15 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
         })
     }) { paddingValues ->
         Box(
-            modifier = Modifier.padding(paddingValues).fillMaxSize(),
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
             if (boardRules.isNotEmpty()) {
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
                     items(boardRules) { rule ->
                         TagRow(content = rule.contentPreview, onClick = {
                             viewModel.apply {
@@ -92,10 +97,17 @@ fun MainScreen(navController: NavHostController, viewModel: BoardRuleViewModel) 
                             }
                             navigateToScreen(navController, typeScreen)
                         }, onLongClick = {
-                            viewModel.apply {
-                                currentBoardRule = rule
+                            if (rule.isOfficial) {
+                                Display().showToast(
+                                    context,
+                                    context.getString(R.string.official_rules_not_edit)
+                                )
+                            } else {
+                                viewModel.apply {
+                                    currentBoardRule = rule
+                                }
+                                navigateToScreen(navController, editScreen)
                             }
-                            navigateToScreen(navController, editScreen)
                         })
                     }
                 }

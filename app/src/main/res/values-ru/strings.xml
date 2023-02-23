@@ -5,6 +5,8 @@
     <string name="about">О приложении</string>
     <string name="about_summary">Разработал Keddnyo</string>
 
+    <string name="official_rules_not_edit">Официальные правила изменять нельзя</string>
+
     <string name="create_board_rule">Добавить правило</string>
     <string name="editor">Редактор</string>
     <string name="editor_placeholder">Пишите здесь</string>

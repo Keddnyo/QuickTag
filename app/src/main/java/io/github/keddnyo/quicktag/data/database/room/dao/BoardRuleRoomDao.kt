@@ -11,7 +11,7 @@ import io.github.keddnyo.quicktag.domain.model.BoardRule
 @Dao
 interface BoardRuleRoomDao {
 
-    @Query("SELECT * FROM board_rule_table")
+    @Query("SELECT * FROM rules")
     fun getBoardRules(): LiveData<List<BoardRule>>
 
     @Insert
